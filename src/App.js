@@ -1,28 +1,59 @@
 import React, { Component } from 'react';
 import './App.css';
 import TodoItem from './components/TodoItems';
+   
 class App extends Component {
   constructor(){
     super();
-    this.TodoItem = [
-      {title: "have a breakfast", isComplete: true},
-      {title: "take a shower", isComplete: true},
-      {title: "goto work"}
-    ]; 
+    this.state = {
+      todoItems: [
+        {title: "take a shower", isComplete: true},
+        {title: "have a breakfast", isComplete: true},
+        {title: "go work", isComplete: false}
+      ]
+    }; 
+
+    this.onItemClicked = this.onItemClicked.bind(this);
   }
 
+  onItemClicked(item) {
+    return(event) => {
+      const isComplete = item.isComplete;
+      const todoItems = this.state.todoItems;
+      const index = todoItems.indexOf(item);
+      this.setState({
+        todoItems: [
+          ...todoItems.slice(0, index),
+          {
+            ...item,
+            isComplete: !isComplete
+          },
+          ...todoItems.slice(index+1)
+        ]
+      });
+    }
+  }
 
   render() {
-    return (
-      <div className="App">
-        {this.TodoItem.length > 0 && this.TodoItem.map((item, key) => 
+    const {todoItems} = this.state;
+    if(todoItems.length) {
+      return(
+        <div className="App">
+          { todoItems.length && todoItems.map((item, index) => (
             <TodoItem 
-              key={key} 
+              key={index}
               item={item}
-            />)}
-        {this.TodoItem.length === 0 && "Nothing here." }
-      </div>
-    );
+              onClick={this.onItemClicked(item)}/>
+          ))}
+        </div>
+      );
+    } else {
+      return (
+        <div className="App">
+          Nothing here.
+        </div>
+      );
+    }
   }
 }
 
