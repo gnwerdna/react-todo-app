@@ -3,9 +3,11 @@ import "./TodoItem.css";
 import classNames from "classnames";
 import checkImg from '../img/check.svg';
 import checkCompleteImg from '../img/check-complete.svg';
+
+import PropTypes from 'prop-types';
 class TodoItem extends React.Component {
     render() {
-        const { item } = this.props;//destructuring
+        const { item, onClick } = this.props;//destructuring
         let url = checkImg;
         if(item.isComplete) {
             url = checkCompleteImg;
@@ -14,10 +16,18 @@ class TodoItem extends React.Component {
             <div className={classNames('TodoItem', {
                 'TodoItem-complete': item.isComplete 
             })}>
-                <img onClick={this.props.onClick} src={url}/>
-                 <p>{this.props.item.title}</p>
+                <img onClick={onClick} src={url}/>
+                 <p>{item.title}</p>
             </div>
         ); 
     }
 }
+
+TodoItem.propTypes = {
+    item: PropTypes.shape({
+        isComplete: PropTypes.bool.isRequired,
+        title: PropTypes.string.isRequired,
+    }),
+    onClick: PropTypes.func.isRequired
+};
 export default TodoItem;

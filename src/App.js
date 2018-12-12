@@ -12,7 +12,7 @@ class App extends Component {
       todoItems: [
         {title: "take a shower", isComplete: true},
         {title: "have a breakfast", isComplete: true},
-        {title: "go work", isComplete: false}
+        {title: "go work", isComplete: 5}
       ]
     }; 
     this.onKeyUp = this.onKeyUp.bind(this);
