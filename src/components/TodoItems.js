@@ -2,7 +2,7 @@ import React from 'react';
 import "./TodoItem.css";
 import classNames from "classnames";
 import checkImg from '../img/check.svg';
-import checkCompleteImg from '../img/check-complete.svg';    
+import checkCompleteImg from '../img/check-complete.svg';
 class TodoItem extends React.Component {
     render() {
         const { item } = this.props;//destructuring

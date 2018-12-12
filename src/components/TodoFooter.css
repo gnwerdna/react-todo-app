@@ -1,0 +1,31 @@
+.Filter {
+    display: flex;
+}
+
+.TodoFooter span {
+    float: left;
+    margin-left: 10px;
+    color: #4d4d4d;
+}
+
+ul.Filter li {
+    list-style: none;
+}
+
+ul.Filter li a {
+    text-decoration: none;
+    margin: 5px;
+    padding: 5px 10px;
+    color: #4d4d4d;
+    border: 1px solid #fff;
+}
+
+.selected {
+    border: 1px solid #eee !important;
+    border-radius: 3px !important;
+}
+
+ul.Filter li a:hover {
+    border: 1px solid #eee;
+    border-radius: 3px;
+}
